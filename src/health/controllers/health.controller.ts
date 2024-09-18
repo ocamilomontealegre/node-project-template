@@ -1,11 +1,18 @@
-import { HealthService } from "health/services/health.service";
+import { inject } from "inversify";
+import { HealthService, TYPES } from "health/services/health.service";
+import { controller, httpGet } from "inversify-express-utils";
+import 
 import type { Request, Response } from "express";
-import type { IHealthMessage } from "health/models/interfaces/health-message.interface";
 
+@controller("")
 export class HealthController {
-  public constructor(private readonly _healthService: HealthService) {}
+  public constructor(
+    @inject(TYPES.HealthService) private readonly _healthService: HealthService
+  ) {}
 
-  async check(req: Request, res: Response): Promise<IHealthMessage> {
-    return this._healthService.check();
+  @httpGet("/")
+  public check(req: Request, res: Response): void {
+    const healthStatus = this._healthService.check();
+    res.json(healthStatus);
   }
 }

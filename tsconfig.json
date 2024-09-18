@@ -12,11 +12,13 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@common/*": ["src/common/*"],
-      "@health/*": ["src/health/*"]
+      "@health/*": ["src/health/*"],
+      "@router/*": ["src/router/*"],
     },
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
