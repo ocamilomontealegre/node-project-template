@@ -1,0 +1,5 @@
+# Auto generated filed
+dist/
+
+# Node
+node_modules/
