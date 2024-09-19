@@ -1,10 +1,10 @@
 import "reflect-metadata";
 import "dotenv/config";
 import express, { json, type Application, type Router } from "express";
-import { think } from "cowsay";
 import { InversifyExpressServer } from "inversify-express-utils";
 import { AppModule } from "app/app.module";
 import { AppRouter } from "app/router/app.router";
+import { LoggerService } from "common/logger/services/logger.service";
 import { nodeConfig } from "common/env";
 
 const createExpressApp = (): Application => {
@@ -29,13 +29,7 @@ const configureApp = (app: Application): void => {
 
 const startServer = (app: Application, port: number): void => {
   app.listen(port, () =>
-    console.log(
-      think({
-        text: `🚀 Server listening on http://localhost:${port}`,
-        e: "Oo",
-        T: "U",
-      }),
-    ),
+    new LoggerService().info(`🚀 Server listening on http://localhost:${port}`),
   );
 };
 
