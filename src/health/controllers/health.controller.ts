@@ -4,10 +4,35 @@ import { controller, httpGet } from "inversify-express-utils";
 import { HEALTH_ENDPOINT } from "health/models/constants";
 import type { Request, Response } from "express";
 
+/**
+ * @swagger
+ * tags:
+ *  name: Health
+ *  description: Health check endpoint
+ */
 @controller(HEALTH_ENDPOINT)
 export class HealthController {
-  public constructor(@inject(HealthService) private readonly _healthService: HealthService) {}
+  public constructor(
+    @inject(HealthService) private readonly _healthService: HealthService,
+  ) {}
 
+  /**
+   * @swagger
+   * /health:
+   *   get:
+   *     summary: Check the health of the system
+   *     tags: [Health]
+   *     responses:
+   *       200:
+   *         description: 🚀 Service is up and running... !
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: object
+   *               properties:
+   *                 status:
+   *                   type: string
+   */
   @httpGet("/")
   public check(_: Request, res: Response): void {
     const healthStatus = this._healthService.check();

@@ -4,7 +4,7 @@ import { createLogger, format, LogCallback, transports } from "winston";
 const { colorize, combine, json, label, printf, timestamp } = format;
 
 @injectable()
-export class LoggerService {
+export class Logger {
   public constructor() {}
 
   private readonly _consoleTransport = new transports.Console({
