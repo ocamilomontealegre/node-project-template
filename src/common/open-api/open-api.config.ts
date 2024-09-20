@@ -12,7 +12,7 @@ const __dirname = dirname(__filename);
 /* eslint-disable*/
 
 export const configureOpenAPI = (app: Application, port: number): void => {
-  const logger = new Logger();
+  const logger = new Logger("OpenAPI Docs");
 
   const openAPIOptions: Options = {
     swaggerDefinition: {

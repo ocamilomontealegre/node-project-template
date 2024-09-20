@@ -12,9 +12,7 @@ import type { Request, Response } from "express";
  */
 @controller(HEALTH_ENDPOINT)
 export class HealthController {
-  public constructor(
-    @inject(HealthService) private readonly _healthService: HealthService,
-  ) {}
+  public constructor(@inject(HealthService) private readonly _healthService: HealthService) {}
 
   /**
    * @swagger
