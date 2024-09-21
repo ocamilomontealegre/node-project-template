@@ -1,5 +1,5 @@
 import { Container } from "inversify";
-import { HealthModule } from "health/health.module";
+import { HealthModule } from "@health/health.module";
 import { AppRouter } from "./router/app.router";
 
 export class AppModule {

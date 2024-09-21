@@ -2,14 +2,14 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { serve, setup } from "swagger-ui-express";
 import swaggerJSDoc, { type Options } from "swagger-jsdoc";
-import { Logger } from "common/logger/logger.config";
-import { appConfig } from "common/env";
+import { Logger } from "@common/logger/logger.config";
+import { appConfig } from "@common/env";
 import type { Application } from "express";
 
 /* eslint-disable */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-/* eslint-disable*/
+/* eslint-enable*/
 
 export const configureOpenAPI = (app: Application, port: number): void => {
   const logger = new Logger("OpenAPI Docs");

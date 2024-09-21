@@ -2,15 +2,15 @@ import "reflect-metadata";
 import "dotenv/config";
 import express, { json, type Application, type Router } from "express";
 import { InversifyExpressServer } from "inversify-express-utils";
-import { AppModule } from "app/app.module";
-import { AppRouter } from "app/router/app.router";
-import { Logger } from "common/logger/logger.config";
-import { configureOpenAPI } from "common/open-api/open-api.config";
-import { errorHandler } from "common/middleware";
-import { loggingInterceptor } from "common/interceptors";
-import { nodeConfig } from "common/env";
-import { Environment } from "common/enums";
-import { initializeErrorHandling } from "common/utils";
+import { AppModule } from "@app/app.module";
+import { AppRouter } from "@app/router/app.router";
+import { Logger } from "@common/logger/logger.config";
+import { configureOpenAPI } from "@common/open-api/open-api.config";
+import { errorHandler } from "@common/middleware";
+import { loggingInterceptor } from "@common/interceptors";
+import { nodeConfig } from "@common/env";
+import { Environment } from "@common/enums";
+import { initializeErrorHandling } from "@common/utils";
 
 const createExpressApp = (): Application => {
   return express();

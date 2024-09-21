@@ -1,7 +1,7 @@
 import { inject } from "inversify";
-import { HealthService } from "health/services/health.service";
+import { HealthService } from "@health/services/health.service";
 import { controller, httpGet } from "inversify-express-utils";
-import { HEALTH_ENDPOINT } from "health/models/constants";
+import { HEALTH_ENDPOINT } from "@health/models/constants";
 import type { Request, Response } from "express";
 
 /**

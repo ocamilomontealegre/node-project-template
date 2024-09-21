@@ -1,4 +1,4 @@
-import { Logger } from "common/logger/logger.config";
+import { Logger } from "@common/logger/logger.config";
 import type { Server } from "http";
 
 export const initializeErrorHandling = (httpServer: Server): void => {

@@ -1,12 +1,8 @@
 import { z } from "zod";
-import { Environment } from "common/enums";
+import { Environment } from "@common/enums";
 
 const EnvSchema = z.object({
-  NODE_ENV: z.enum([
-    Environment.DEVELOPMENT,
-    Environment.PRODUCTION,
-    Environment.TEST,
-  ]),
+  NODE_ENV: z.enum([Environment.DEVELOPMENT, Environment.PRODUCTION, Environment.TEST]),
   NODE_PORT: z.coerce
     .number({
       description:

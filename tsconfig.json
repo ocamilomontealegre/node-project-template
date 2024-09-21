@@ -8,7 +8,7 @@
     "skipLibCheck": true,
     "moduleResolution": "Node",
     "sourceMap": true,
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
       "@app/*": ["src/app/*"],
       "@common/*": ["src/common/*"],
@@ -18,8 +18,9 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "types": ["vitest"]
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "test/**/*"],
   "exclude": ["node_modules"]
 }

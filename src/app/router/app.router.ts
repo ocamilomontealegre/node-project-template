@@ -1,4 +1,4 @@
-import { NotFoundException } from "common/exceptions/http.exception";
+import { NotFoundException } from "@common/exceptions/http.exception";
 import { Router, type Request, type Response, type NextFunction } from "express";
 import { injectable } from "inversify";
 

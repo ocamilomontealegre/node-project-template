@@ -1,4 +1,4 @@
-import { Logger } from "common/logger/logger.config";
+import { Logger } from "@common/logger/logger.config";
 import type { NextFunction, Request, Response } from "express";
 
 export const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction): void => {
