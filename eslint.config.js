@@ -20,7 +20,7 @@ export default [
     },
   },
   { languageOptions: { globals: globals.browser } },
-  { ignores: ["dist", "node_modules", "eslint.config.js"] },
+  { ignores: ["dist", "node_modules", "eslint.config.js", "vitest.config.ts"] },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   {
