@@ -1,0 +1,66 @@
+import express, { json, type Application } from "express";
+import { InversifyExpressServer } from "inversify-express-utils";
+import { serve, setup } from "swagger-ui-express";
+import { AppModule } from "@app/app.module";
+import { AppRouter } from "@app/router/app.router";
+import { HttpLoggingInterceptor } from "@common/interceptors";
+import { OpenAPIConfigurator } from "@common/open-api/open-api.config";
+import { Environment } from "@common/enums";
+import type { Container } from "inversify";
+import type { appConfig, nodeConfig } from "@common/env";
+import { errorHandler } from "@common/middleware";
+
+export class AppBuilder {
+  private readonly _app: Application;
+  private readonly _appContainer: Container;
+
+  public constructor(
+    private readonly _nodeConfig: typeof nodeConfig,
+    private readonly _appConfig: typeof appConfig,
+  ) {
+    this._app = express();
+    this._nodeConfig = _nodeConfig;
+    this._appConfig = _appConfig;
+    this._appContainer = new AppModule().getContainer();
+  }
+
+  public useJSon(): this {
+    this._app.use(json());
+    return this;
+  }
+
+  public useHttpInterceptor(): this {
+    this._app.use(new HttpLoggingInterceptor().intercept);
+    return this;
+  }
+
+  public configureOpenAPI(): this {
+    if (this._nodeConfig.env === Environment.DEVELOPMENT) {
+      const openAPIDocs = new OpenAPIConfigurator(this._appConfig).configure(this._nodeConfig.port);
+      this._app.use(this._appConfig.appDocsEndpoint, serve, setup(openAPIDocs));
+    }
+
+    return this;
+  }
+
+  public setupRouters(): this {
+    const inversifyRouter = new InversifyExpressServer(this._appContainer).build()._router;
+    const appRouter = this._appContainer.get<AppRouter>(AppRouter).getRouter();
+
+    const apiPrefix = `/${this._appConfig.appGlobalPrefix}/${this._appConfig.appVersion}`;
+
+    this._app.use(apiPrefix, inversifyRouter);
+    this._app.use(appRouter);
+
+    return this;
+  }
+
+  public useErrorHandler(): this {
+    this._app.use(errorHandler);
+    return this;
+  }
+
+  public build(): Application {
+    return this._app;
+  }
+}
