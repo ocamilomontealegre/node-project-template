@@ -17,6 +17,7 @@ const startServer = (app: Application, port: number): void => {
 
 const bootstrap = (): void => {
   const app = new AppBuilder(nodeConfig, appConfig)
+    .useCors()
     .useJSon()
     .useHttpInterceptor()
     .configureOpenAPI()

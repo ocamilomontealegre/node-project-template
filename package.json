@@ -9,7 +9,7 @@
     "start": "tsc && node dist/main.js",
     "start:dev": "tsx watch src/main.ts",
     "lint": "eslint .",
-    "test:unit": "vitest --config test/config/vitest.config.unit.ts --coverage", 
+    "test:unit": "vitest --config test/config/vitest.config.unit.ts --coverage",
     "test:e2e": "vitest --config test/config/vitest.config.e2e.ts"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.10.0",
+    "@types/cors": "^2.8.17",
     "@types/eslint__js": "^8.42.3",
     "@types/express": "^4.17.21",
     "@types/node": "^22.5.5",
@@ -37,10 +38,12 @@
     "vitest": "^2.1.1"
   },
   "dependencies": {
+    "@chiguitech/node-common": "^0.0.1",
     "@typescript-eslint/eslint-plugin": "^8.6.0",
     "awilix": "^11.0.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "inversify": "^6.0.2",

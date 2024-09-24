@@ -1,5 +1,6 @@
 import express, { json, type Application } from "express";
 import { InversifyExpressServer } from "inversify-express-utils";
+import cors from "cors";
 import { serve, setup } from "swagger-ui-express";
 import { AppModule } from "@app/app.module";
 import { AppRouter } from "@app/router/app.router";
@@ -22,6 +23,11 @@ export class AppBuilder {
     this._nodeConfig = _nodeConfig;
     this._appConfig = _appConfig;
     this._appContainer = new AppModule().getContainer();
+  }
+
+  public useCors(): this {
+    this._app.use(cors());
+    return this;
   }
 
   public useJSon(): this {

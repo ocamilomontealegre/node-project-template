@@ -1,11 +1,7 @@
-import { join } from "node:path";
 import swaggerJSDoc, { type Options } from "swagger-jsdoc";
 import { Logger } from "@common/logger/logger.config";
 import { appConfig } from "@common/env";
-import { getCurrentDirectory } from "@common/utils";
-
-// eslint-disable-next-line
-const __dirname = getCurrentDirectory();
+import openAPIRoutes from "./open-api.json" assert { type: "json" };
 
 export class OpenAPIConfigurator {
   private readonly _logger: Logger;
@@ -23,8 +19,9 @@ export class OpenAPIConfigurator {
           version: this._appConfig.appDocsVersion,
           description: "API documentation using OpenAPI 3.0.1",
         },
+        ...openAPIRoutes,
       },
-      apis: [join(__dirname, "../../health/controllers/health.controller.ts")],
+      apis: [],
     };
 
     const openAPIDocs = swaggerJSDoc(openAPIOptions);
