@@ -7,14 +7,15 @@ export class HttpLoggingInterceptor {
   private readonly _logger: Logger;
 
   public constructor() {
-    this._logger = new Logger("HTTP Logging Interceptor");
+    this._logger = new Logger(HttpLoggingInterceptor.name);
   }
 
   public intercept = (req: Request, res: Response, next: NextFunction): void => {
     const { method, url, headers } = req;
+
     const requestBody = req.body ? JSON.stringify(req.body) : "";
 
-    this._logger.debug(
+    this._logger.info(
       `🕵️  Incoming request: METHOD: ${method} | URL: ${url} | HEADERS: ${JSON.stringify(
         headers,
       )} | BODY: ${requestBody} |`,
@@ -23,7 +24,7 @@ export class HttpLoggingInterceptor {
     const originalSend = res.send.bind(res);
 
     res.send = (body: unknown): Response => {
-      this._logger.debug(`🕵️  Outgoing response: STATUS_CODE: ${res.statusCode} | BODY: ${body}`);
+      this._logger.info(`🕵️  Outgoing response: STATUS_CODE: ${res.statusCode} | BODY: ${body}`);
       return originalSend(body);
     };
 
