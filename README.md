@@ -11,17 +11,17 @@
 </p>
 
 <p align="center">
-  <a href="https://nodejs.org/docs/latest-v20.x/api/index.html">
+  <a href="https://nodejs.org/docs/latest-v20.x/api/index.html" target="_blank">
     <img src="https://img.shields.io/badge/node-20.x-green.svg" alt="node"/>
   </a>
-  <a href="https://www.typescriptlang.org/">
+  <a href="https://www.typescriptlang.org/" target="_blank">
     <img src="https://img.shields.io/badge/typescript-5.x-blue.svg" alt="typescript"/>
   </a>
-  <a href="https://docs.nestjs.com/v10/">
+  <a href="https://www.npmjs.com/" target="_blank">
     <img src="https://img.shields.io/badge/npm-10.x-red.svg" alt="npm"/>
   </a>
   <a href="https://expressjs.com/">
-    <img src="https://img.shields.io/badge/Web_Framework-Express⚡-black.svg" alt="fastify"/>
+    <img src="https://img.shields.io/badge/Web_Framework-Express-black.svg" alt="express"/>
   </a>
   <a href="https://swc.rs/">
     <img src="https://img.shields.io/badge/Compiler-SWC_-orange.svg" alt="swc"/>
