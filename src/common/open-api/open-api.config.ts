@@ -1,7 +1,7 @@
 import swaggerJSDoc, { type Options } from "swagger-jsdoc";
 import { Logger } from "@common/logger/logger.config";
 import { appConfig } from "@common/env";
-import openAPIRoutes from "./open-api.json" assert { type: "json" };
+import { apiDocs } from "./api-docs";
 
 export class OpenAPIConfigurator {
   private readonly _logger: Logger;
@@ -19,7 +19,7 @@ export class OpenAPIConfigurator {
           version: this._appConfig.appDocsVersion,
           description: "API documentation using OpenAPI 3.0.1",
         },
-        ...openAPIRoutes,
+        ...apiDocs,
       },
       apis: [],
     };
@@ -32,3 +32,4 @@ export class OpenAPIConfigurator {
     return openAPIDocs;
   }
 }
+

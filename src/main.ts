@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import "dotenv/config";
-import { AppBuilder } from "@app/builders/app.builder";
+import { AppBuilder } from "@app/app.builder";
 import { Logger } from "@common/logger/logger.config";
 import { ErrorHandler } from "@common/exception-filters";
 import { appConfig, nodeConfig } from "@common/env";
@@ -29,3 +29,4 @@ const bootstrap = (): void => {
 };
 
 bootstrap();
+
