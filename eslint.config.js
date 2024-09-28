@@ -33,7 +33,6 @@ export default [
   ...tseslint.configs.recommended,
   {
     rules: {
-      // "unused-imports/no-unused-imports": "error",
       "no-duplicate-imports": "error",
       "@typescript-eslint/triple-slash-reference": "off",
       "@typescript-eslint/interface-name-prefix": "off",
