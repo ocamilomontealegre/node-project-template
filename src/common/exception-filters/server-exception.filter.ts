@@ -1,13 +1,13 @@
 import { Logger } from "@common/logger/logger.config";
 import type { Server } from "http";
 
-export class ErrorHandler {
+export class ServerExceptionFilter {
   private readonly _httpServer: Server;
   private readonly _logger: Logger;
 
   public constructor(httpServer: Server) {
     this._httpServer = httpServer;
-    this._logger = new Logger();
+    this._logger = new Logger(ServerExceptionFilter.name);
   }
 
   public initialize(): void {
@@ -21,7 +21,7 @@ export class ErrorHandler {
   };
 
   private readonly handleUnhandledRejection = (reason: unknown): void => {
-    this._logger.error(`Unhandled Rejection: ${reason}`);
+    this._logger.error(`Unhandled Rejection: ${JSON.stringify(reason)}`);
     this.handleShutdown();
   };
 
@@ -33,3 +33,4 @@ export class ErrorHandler {
     });
   };
 }
+
