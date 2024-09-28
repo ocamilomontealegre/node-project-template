@@ -1,13 +1,13 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank">
-    <img src="images/nestjs.png" width="512" alt="Nest Logo" />
+  <a href="https://nodejs.org/en" target="blank">
+    <img src="images/node.png" width="512" alt="Node Logo" />
   </a>
 </p>
 
-<h1 align="center">⭐ Typescript Service Template ⭐</h1>
+<h1 align="center">⭐ Node-Typescript Service Template ⭐</h1>
 
 <p align="center">
-  Template for new services based on NestJS with the Best Practices and Ready for Production
+  Template for new services based on NodeJS with the Best Practices and Ready for Production
 </p>
 
 <p align="center">
@@ -42,7 +42,7 @@ Here we are not providing any specific architecture like hexagonal architecture 
 ## Project setup
 
 ```bash
-pnpm install
+npm install
 ```
 
 ## Compile and run the project
