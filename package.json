@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "tsc && node dist/main.js",
-    "start:dev": "tsx watch src/main.ts",
+    "start": "tsc && node dist/src/main.js",
+    "start:dev": "nodemon",
     "lint": "eslint .",
     "test:unit": "vitest --config test/config/vitest.config.unit.ts --coverage",
     "test:e2e": "vitest --config test/config/vitest.config.e2e.ts"
@@ -28,6 +28,7 @@
     "eslint": "^9.10.0",
     "eslint-plugin-unused-imports": "^4.1.4",
     "globals": "^15.9.0",
+    "nodemon": "^3.1.7",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
     "ts-node": "^10.9.2",
