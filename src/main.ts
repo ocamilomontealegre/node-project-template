@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import "dotenv/config";
-import { AppBuilder } from "@app/app.builder";
+import { AppBuilder } from "@app/builder/app.builder";
 import { Logger } from "@common/logger/logger.config";
 import { ServerExceptionFilter } from "@common/exception-filters";
 import { appConfig, nodeConfig } from "@common/env";
@@ -18,7 +18,7 @@ const startServer = (app: Application, port: number): void => {
 const bootstrap = (): void => {
   const app = new AppBuilder(nodeConfig, appConfig)
     .useCors()
-    .useJSon()
+    .useJSonParser()
     .useHttpInterceptor()
     .configureOpenAPI()
     .setupRouters()

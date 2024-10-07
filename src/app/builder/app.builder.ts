@@ -4,7 +4,7 @@ import cors from "cors";
 import { serve, setup } from "swagger-ui-express";
 import { AppModule } from "@app/app.module";
 import { AppRouter } from "@app/router/app.router";
-import { HttpLoggingInterceptor } from "@common/interceptors";
+import { HttpInterceptor } from "@common/interceptors";
 import { OpenAPIConfigurator } from "@common/open-api/open-api.config";
 import { Environment } from "@common/enums";
 import type { Container } from "inversify";
@@ -30,13 +30,13 @@ export class AppBuilder {
     return this;
   }
 
-  public useJSon(): this {
+  public useJSonParser(): this {
     this._app.use(json());
     return this;
   }
 
   public useHttpInterceptor(): this {
-    this._app.use(new HttpLoggingInterceptor().intercept);
+    this._app.use(new HttpInterceptor().intercept);
     return this;
   }
 
@@ -70,3 +70,4 @@ export class AppBuilder {
     return this._app;
   }
 }
+
