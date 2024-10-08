@@ -2,14 +2,12 @@ import "reflect-metadata";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { HealthController } from "@health/controllers/health.controller";
 import { HEALTH_MESSAGE } from "@health/models/constants";
-import type { Request, Response } from "express";
 import type { HealthService } from "@health/services/health.service";
+import type { IHealthMessage } from "@health/models/interfaces";
 
 describe("HealthController Unit Test", () => {
   let healthController: HealthController;
   let mockHealthService: HealthService;
-  let mockRequest: Request;
-  let mockResponse: Response;
 
   beforeEach(() => {
     mockHealthService = {
@@ -17,15 +15,13 @@ describe("HealthController Unit Test", () => {
     } as unknown as HealthService;
 
     healthController = new HealthController(mockHealthService);
-
-    mockRequest = {} as Request;
-    mockResponse = { json: vi.fn() } as unknown as Response;
   });
 
-  it("Should return the health status from the HealthService", () => {
-    healthController.check(mockRequest, mockResponse);
+  it("Should return the health status from the HealthService", async () => {
+    const result: IHealthMessage = await healthController.check();
 
     expect(mockHealthService.check).toHaveBeenCalledTimes(1);
-    expect(mockResponse.json).toHaveBeenCalledWith(HEALTH_MESSAGE);
+    expect(result).toEqual(HEALTH_MESSAGE);
   });
 });
+

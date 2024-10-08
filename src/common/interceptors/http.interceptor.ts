@@ -24,7 +24,7 @@ export class HttpInterceptor {
 
       res.on("finish", () => {
         this._logger.info(
-          `🕵️  Incoming request: METHOD ${method} | URL: ${url} | HEADERS: ${JSON.stringify(
+          `🕵️  Incoming request: METHOD: ${method} | URL: ${url} | HEADERS: ${JSON.stringify(
             headers,
           )} | REQUEST-BODY: ${requestBody} | Outgoing response: STATUS_CODE: ${
             res.statusCode

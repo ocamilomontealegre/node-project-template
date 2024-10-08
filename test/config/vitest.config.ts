@@ -22,7 +22,15 @@ export default defineConfig({
       reporter: ["text", "html", "lcov"],
       all: true,
       include: ["src/**/*.{js,ts}"],
-      exclude: ["node_modules", "dist", "test", "eslint.config.js"],
+      exclude: [
+        "src/**/*.interface.ts",
+        "src/**/*.d.ts",
+        "**/index.ts",
+        "node_modules",
+        "dist",
+        "test",
+        "eslint.config.js",
+      ],
       thresholds: {
         lines: 90,
         functions: 90,
@@ -32,3 +40,4 @@ export default defineConfig({
     },
   },
 });
+

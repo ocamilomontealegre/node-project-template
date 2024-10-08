@@ -2,7 +2,7 @@ import "reflect-metadata";
 import "dotenv/config";
 import { AppBuilder } from "@app/builder/app.builder";
 import { Logger } from "@common/logger/logger.config";
-import { ServerExceptionFilter } from "@common/exception-filters";
+import { UncaughtExceptionFilter } from "@common/exception-filters";
 import { appConfig, nodeConfig } from "@common/env";
 import type { Application } from "express";
 
@@ -12,7 +12,7 @@ const startServer = (app: Application, port: number): void => {
       `🚀 Server listening on http://localhost:${port}/${appConfig.appGlobalPrefix}/${appConfig.appVersion}`,
     ),
   );
-  new ServerExceptionFilter(server).initialize();
+  new UncaughtExceptionFilter(server).initialize();
 };
 
 const bootstrap = (): void => {

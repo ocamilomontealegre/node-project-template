@@ -45,7 +45,7 @@ Here we are not providing any specific architecture like hexagonal architecture 
 npm install
 ```
 
-## Compile and run the project
+## Compile and run
 
 ```bash
 # development
@@ -55,7 +55,30 @@ $ npm run start
 $ npm run start:dev
 
 # production mode
-$ npm run start:prod
+$ npm run start
+```
+
+## Lint
+
+```bash
+# lint
+$ npm run lint
+
+# lint:fix
+$ npm run lint:fix
+```
+
+## Test
+
+```bash
+# run unit tests
+$ npm run test:unit
+
+# run e2e tests
+$ npm run test:e2e
+
+# run all tests
+$ npm run test
 ```
 
 ## License

@@ -6,10 +6,10 @@ import { AppModule } from "@app/app.module";
 import { AppRouter } from "@app/router/app.router";
 import { HttpInterceptor } from "@common/interceptors";
 import { OpenAPIConfigurator } from "@common/open-api/open-api.config";
+import { errorHandler } from "@common/middleware";
 import { Environment } from "@common/enums";
 import type { Container } from "inversify";
 import type { appConfig, nodeConfig } from "@common/env";
-import { errorHandler } from "@common/middleware";
 
 export class AppBuilder {
   private readonly _app: Application;
