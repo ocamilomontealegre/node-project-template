@@ -6,7 +6,7 @@ import { IHealthMessage } from "@health/models/interfaces";
 
 @controller(HEALTH_ENDPOINT)
 export class HealthController implements interfaces.Controller {
-  public constructor(@inject(HealthService) private readonly _healthService: HealthService) {}
+  public constructor(@inject(HealthService) private readonly _healthService: HealthService) { }
 
   @httpGet("/")
   public async check(): Promise<IHealthMessage> {

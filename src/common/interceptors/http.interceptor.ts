@@ -1,5 +1,8 @@
+import { HTTPResponse } from "@common/utils";
 import { Logger } from "@common/logger/logger.config";
-import type { NextFunction, Request, Response } from "express";
+import { appConfig } from "@common/env";
+import type { NextFunction, Request, Response, Send } from "express";
+import type { GenericObject } from "@common/types";
 
 export class HttpInterceptor {
   private readonly _logger: Logger;
@@ -8,30 +11,45 @@ export class HttpInterceptor {
     this._logger = new Logger(HttpInterceptor.name);
   }
 
+  private _overrideResMethod(res: Response, method: Send): Send {
+    return (body: GenericObject): Response => {
+      if (res.statusCode >= 400) {
+        res.locals.httpResponse = body;
+        return method.call(res, body);
+      }
+
+      const httpResponse = new HTTPResponse(body);
+      res.locals.httpResponse = httpResponse;
+
+      return method.call(res, httpResponse);
+    }
+  }
+
   public intercept = (req: Request, res: Response, next: NextFunction): void => {
     const { method, url, headers } = req;
 
     const requestBody = req.body ? JSON.stringify(req.body) : "";
-    let responseBody: unknown;
 
-    if (!url.includes("/docs/")) {
-      const originalSend = res.send.bind(res);
-
-      res.send = (body: unknown): Response => {
-        responseBody = body;
-        return originalSend(body);
-      };
-
-      res.on("finish", () => {
-        this._logger.info(
-          `🕵️  Incoming request: METHOD: ${method} | URL: ${url} | HEADERS: ${JSON.stringify(
-            headers,
-          )} | REQUEST-BODY: ${requestBody} | Outgoing response: STATUS_CODE: ${
-            res.statusCode
-          } | RESPONSE-BODY: ${responseBody}`,
-        );
-      });
+    if (url.includes(`${appConfig.appDocsEndpoint}`)) {
+      return next();
     }
+
+    const originalJson = res.json.bind(res);
+    res.json = this._overrideResMethod(res, originalJson);
+
+    res.on("finish", () => {
+      const { statusCode, locals } = res;
+
+      const logBody = `Incoming request: METHOD: ${method} | URL: ${url} | HEADERS: ${JSON.stringify(
+        headers,
+      )} | REQUEST-BODY: ${requestBody} | Outgoing response: STATUS_CODE: ${statusCode
+        } | RESPONSE-BODY: ${JSON.stringify(locals.httpResponse)}`;
+
+      if (statusCode >= 400)
+        this._logger.error(logBody)
+      else
+        this._logger.info(logBody);
+    });
 
     next();
   };

@@ -1,2 +1,2 @@
-export * from "./generic-object.type";
+export type * from "./generic-object.type";
 

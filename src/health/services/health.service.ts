@@ -7,7 +7,7 @@ export const TYPES = {
 
 @injectable()
 export class HealthService implements IHealthService {
-  public constructor() {}
+  public constructor() { }
 
   public check(): IHealthMessage {
     return HEALTH_MESSAGE;

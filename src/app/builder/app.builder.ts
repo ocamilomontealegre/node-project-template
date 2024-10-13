@@ -1,12 +1,13 @@
 import express, { json, type Application } from "express";
 import { InversifyExpressServer } from "inversify-express-utils";
-import cors from "cors";
 import { serve, setup } from "swagger-ui-express";
+import cors from "cors";
+import helmet from "helmet";
 import { AppModule } from "@app/app.module";
 import { AppRouter } from "@app/router/app.router";
 import { HttpInterceptor } from "@common/interceptors";
 import { OpenAPIConfigurator } from "@common/open-api/open-api.config";
-import { errorHandler } from "@common/middleware";
+import { HTTPExceptionFilter } from "@common/exception-filters";
 import { Environment } from "@common/enums";
 import type { Container } from "inversify";
 import type { appConfig, nodeConfig } from "@common/env";
@@ -25,13 +26,18 @@ export class AppBuilder {
     this._appContainer = new AppModule().getContainer();
   }
 
-  public useCors(): this {
-    this._app.use(cors());
+  public useJSonParser(): this {
+    this._app.use(json());
     return this;
   }
 
-  public useJSonParser(): this {
-    this._app.use(json());
+  public useHelmet(): this {
+    this._app.use(helmet());
+    return this;
+  }
+
+  public useCors(): this {
+    this._app.use(cors());
     return this;
   }
 
@@ -62,7 +68,7 @@ export class AppBuilder {
   }
 
   public useErrorHandler(): this {
-    this._app.use(errorHandler);
+    this._app.use(new HTTPExceptionFilter().catch);
     return this;
   }
 

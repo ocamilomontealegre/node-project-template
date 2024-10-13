@@ -9,7 +9,7 @@ import type { Application } from "express";
 const startServer = (app: Application, port: number): void => {
   const server = app.listen(port, () =>
     new Logger().info(
-      `🚀 Server listening on http://localhost:${port}/${appConfig.appGlobalPrefix}/${appConfig.appVersion}`,
+      `Server listening on http://localhost:${port}/${appConfig.appGlobalPrefix}/${appConfig.appVersion}`, "🚀"
     ),
   );
   new UncaughtExceptionFilter(server).initialize();
@@ -17,8 +17,9 @@ const startServer = (app: Application, port: number): void => {
 
 const bootstrap = (): void => {
   const app = new AppBuilder(nodeConfig, appConfig)
-    .useCors()
     .useJSonParser()
+    .useHelmet()
+    .useCors()
     .useHttpInterceptor()
     .configureOpenAPI()
     .setupRouters()

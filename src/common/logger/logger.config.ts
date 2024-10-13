@@ -61,19 +61,19 @@ export class Logger {
     return this._logger;
   }
 
-  public info(message: string, callback?: LogCallback): void {
-    this.logger.info(message, callback);
+  public info(message: string, icon: string = "📄", callback?: LogCallback): void {
+    this.logger.info(`${icon} ${message}`, callback);
   }
 
-  public warn(message: string, callback?: LogCallback): void {
-    this.logger.warn(message, callback);
+  public warn(message: string, icon: string = "⚠️", callback?: LogCallback): void {
+    this.logger.warn(`${icon} ${message}`, callback);
   }
 
-  public error(message: string, callback?: LogCallback): void {
-    this.logger.error(message, callback);
+  public error(message: string, icon: string = "💥", callback?: LogCallback): void {
+    this.logger.error(`${icon} ${message}`, callback);
   }
 
-  public debug(message: string, callback?: LogCallback): void {
-    this.logger.debug(message, callback);
+  public debug(message: string, icon: string = "🐛", callback?: LogCallback): void {
+    this.logger.debug(`${icon} ${message}`, callback);
   }
 }
