@@ -13,6 +13,10 @@ export class UncaughtExceptionFilter {
   public initialize(): void {
     process.on("uncaughtException", this.handleUncaughtException);
     process.on("unhandledRejection", this.handleUnhandledRejection);
+
+    this._httpServer.on("error", this.handleServerError);
+
+    process.on("SIGINT", this.handleSigInt);
   }
 
   private readonly handleUncaughtException = (err: Error): void => {
@@ -22,6 +26,20 @@ export class UncaughtExceptionFilter {
 
   private readonly handleUnhandledRejection = (reason: unknown): void => {
     this._logger.error(`Unhandled Rejection: ${JSON.stringify(reason)}`);
+    this.handleShutdown();
+  };
+
+  private readonly handleServerError = (error: NodeJS.ErrnoException): void => {
+    if (error.code === "EADDRINUSE")
+      this._logger.error(`Port already in use: ${error.message}`);
+    else
+      this._logger.error(`Server Error: ${error.message}`);
+
+    this.handleShutdown();
+  };
+
+  private readonly handleSigInt = (): void => {
+    this._logger.info("Received SIGINT (Ctrl+C). Shutting down gracefully...");
     this.handleShutdown();
   };
 

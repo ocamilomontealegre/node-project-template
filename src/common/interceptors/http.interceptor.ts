@@ -1,5 +1,5 @@
-import { HTTPResponse } from "@common/utils";
 import { Logger } from "@common/logger/logger.config";
+import { HTTPResponse, getHttpMessage } from "@common/utils";
 import { appConfig } from "@common/env";
 import type { NextFunction, Request, Response, Send } from "express";
 import type { GenericObject } from "@common/types";
@@ -18,7 +18,9 @@ export class HttpInterceptor {
         return method.call(res, body);
       }
 
-      const httpResponse = new HTTPResponse(body);
+      const httpResponse = new HTTPResponse(
+        { message: getHttpMessage(res.statusCode), data: body }
+      );
       res.locals.httpResponse = httpResponse;
 
       return method.call(res, httpResponse);

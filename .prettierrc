@@ -6,7 +6,7 @@
   "semi": true,
   "bracketSpacing": true,
   "bracketSameLine": true,
-  "printWidth": 100,
+  "printWidth": 88,
   "proseWrap": "always",
   "endOfLine": "crlf",
   "useTabs": false
