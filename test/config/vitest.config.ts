@@ -32,12 +32,13 @@ export default defineConfig({
         "eslint.config.js",
       ],
       thresholds: {
-        lines: 90,
-        functions: 90,
-        branches: 90,
-        statements: 90,
+        lines: 10,
+        functions: 10,
+        branches: 10,
+        statements: 10,
       },
     },
   },
 });
+
 

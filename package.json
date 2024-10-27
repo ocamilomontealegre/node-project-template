@@ -14,7 +14,7 @@
     "lint:fix": "npm run lint --fix",
     "test:unit": "vitest --config test/config/vitest.config.unit.ts --coverage",
     "test:e2e": "vitest --config test/config/vitest.config.e2e.ts --coverage",
-    "test": "concurrently \"npm run test:unit\" \"npm run test:e2e\"",
+    "test": "concurrently \"cross-env npm run test:unit\" \"cross-env npm run test:e2e\"",
     "prepare": "pnpm exec husky init"
   },
   "keywords": [
@@ -40,6 +40,7 @@
     "@typescript-eslint/parser": "^8.6.0",
     "@vitest/coverage-v8": "^2.1.1",
     "concurrently": "^9.0.1",
+    "cross-env": "^7.0.3",
     "eslint": "^9.10.0",
     "globals": "^15.9.0",
     "husky": "^9.1.6",
@@ -74,3 +75,6 @@
     "zod": "^3.23.8"
   }
 }
+
+
+
