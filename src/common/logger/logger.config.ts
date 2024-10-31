@@ -2,12 +2,12 @@ import { injectable } from "inversify";
 import {
   createLogger,
   format,
-  LogCallback,
   transports,
   type Logger as WinstonLogger,
 } from "winston";
 import { ANSIColors } from "./enums";
 import { LOGGER_COLORS } from "./constants";
+import type { LogCallback } from "./types/log-callback.type";
 
 const { colorize, combine, json, label, printf, timestamp } = format;
 
@@ -77,3 +77,4 @@ export class Logger {
     this.logger.debug(`${icon} ${message}`, callback);
   }
 }
+

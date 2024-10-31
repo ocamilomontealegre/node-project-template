@@ -10,12 +10,15 @@
     "clean": "rm -rf dist",
     "start": "node dist/main.js",
     "start:dev": "nodemon",
-    "lint": "eslint src --ignore-pattern '**/*.js' --ignore-pattern '**/*.ts'",
+    "lint": "eslint src",
     "lint:fix": "npm run lint --fix",
+    "lint:verbose": "npm run lint --debug",
+    "check:ts": "npx tsc --noEmit",
+    "check:verbose": "npx tsc --noEmit --diagnostics",
     "test:unit": "vitest --config test/config/vitest.config.unit.ts --coverage",
     "test:e2e": "vitest --config test/config/vitest.config.e2e.ts --coverage",
     "test": "concurrently \"npm run test:unit\" \"npm run test:e2e\"",
-    "prepare": "pnpm exec husky init"
+    "prepare": "husky"
   },
   "keywords": [
     "typescript",
@@ -59,7 +62,10 @@
   },
   "dependencies": {
     "@chiguitech/node-common": "^0.0.1",
+    "@cspell/eslint-plugin": "^8.15.5",
+    "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^8.6.0",
+    "@vitest/eslint-plugin": "^1.1.7",
     "awilix": "^11.0.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",

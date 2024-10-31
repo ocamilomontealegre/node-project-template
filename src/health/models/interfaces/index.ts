@@ -1,2 +1,3 @@
-export * from "./health-message.interface";
-export * from "./health-service.interface";
+export type * from "./health-message.interface";
+export type * from "./health-service.interface";
+

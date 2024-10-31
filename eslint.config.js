@@ -2,25 +2,34 @@ import { fileURLToPath } from "node:url";
 import { dirname } from "node:path";
 import globals from "globals";
 import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
+import typescriptEslint from "typescript-eslint";
+import vitest from "@vitest/eslint-plugin";
+import cspellPlugin from "@cspell/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export default [
+export default typescriptEslint.config(
   {
     files: ["**/*.{js,mjs,cjs,ts}"],
     languageOptions: {
-      parser: "@typescript-eslint/parser",
+      globals: {
+        ...globals.node,
+      },
+      parser: tsParser,
+      ecmaVersion: 2020,
       parserOptions: {
         project: "tsconfig.json",
         tsconfigRootDir: __dirname,
         sourceType: "module",
       },
     },
-  },
-  { languageOptions: { globals: globals.browser } },
-  {
+    settings: {
+      node: {
+        allow: ["process", "Buffer"],
+      },
+    },
     ignores: [
       "dist",
       "node_modules",
@@ -28,10 +37,10 @@ export default [
       "vitest.config.ts",
       "commitlint.config.ts",
     ],
-  },
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  {
+    plugins: {
+      "@cspell": cspellPlugin,
+    },
+    extends: [pluginJs.configs.recommended, ...typescriptEslint.configs.recommended],
     rules: {
       "no-duplicate-imports": "error",
       "@typescript-eslint/triple-slash-reference": "off",
@@ -151,7 +160,34 @@ export default [
           leadingUnderscore: "allow",
         },
       ],
+
+      "@cspell/spellchecker": [
+        "warn",
+        {
+          autoFix: true,
+          numSuggestions: 5,
+          generateSuggestions: true,
+          checkComments: true,
+          checkIdentifiers: true,
+          checkStrings: true,
+          checkStringTemplates: true,
+          cspell: {
+            import: ["./cspell.json"],
+          },
+          cspellOptionsRoot: import.meta.url,
+        },
+      ],
     },
   },
-];
+  {
+    files: ["*.spec.ts"],
+    plugins: {
+      vitest,
+    },
+    rules: {
+      ...vitest.configs.recommended.rules,
+      "vitest/max-nested-describe": ["error", { max: 3 }],
+    },
+  },
+);
 

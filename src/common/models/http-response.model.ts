@@ -1,7 +1,7 @@
 import type { IHTTPResponse } from "@common/interfaces";
 import type { GenericObject } from "@common/types";
 
-export class HTTPResponse {
+export class HTTPResponseModel {
   public readonly status: number;
   public readonly success: boolean;
   public readonly message: string;
@@ -22,3 +22,4 @@ export class HTTPResponse {
     this.timestamp = timestamp;
   }
 }
+

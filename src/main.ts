@@ -9,7 +9,8 @@ import type { Application } from "express";
 const startServer = (app: Application, port: number): void => {
   const server = app.listen(port, () =>
     new Logger().info(
-      `Server listening on http://localhost:${port}/${appConfig.appGlobalPrefix}/${appConfig.appVersion}`, "🚀"
+      `Server listening on http://localhost:${port}/${appConfig.appGlobalPrefix}/${appConfig.appVersion}`,
+      "🚀",
     ),
   );
   new UncaughtExceptionFilter(server).initialize();
