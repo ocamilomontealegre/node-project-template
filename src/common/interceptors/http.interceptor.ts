@@ -1,5 +1,6 @@
 import { Logger } from "@common/logger/logger.config";
-import { HTTPResponse, getHttpMessage } from "@common/utils";
+import { HTTPUtils } from "@common/utils";
+import { HTTPResponseModel } from "@common/models";
 import { appConfig } from "@common/env";
 import type { NextFunction, Request, Response, Send } from "express";
 import type { GenericObject } from "@common/types";
@@ -18,13 +19,14 @@ export class HttpInterceptor {
         return method.call(res, body);
       }
 
-      const httpResponse = new HTTPResponse(
-        { message: getHttpMessage(res.statusCode), data: body }
-      );
+      const httpResponse = new HTTPResponseModel({
+        message: HTTPUtils.getHttpMessage(res.statusCode),
+        data: body,
+      });
       res.locals.httpResponse = httpResponse;
 
       return method.call(res, httpResponse);
-    }
+    };
   }
 
   public intercept = (req: Request, res: Response, next: NextFunction): void => {
@@ -44,13 +46,12 @@ export class HttpInterceptor {
 
       const logBody = `Incoming request: METHOD: ${method} | URL: ${url} | HEADERS: ${JSON.stringify(
         headers,
-      )} | REQUEST-BODY: ${requestBody} | Outgoing response: STATUS_CODE: ${statusCode
-        } | RESPONSE-BODY: ${JSON.stringify(locals.httpResponse)}`;
+      )} | REQUEST-BODY: ${requestBody} | Outgoing response: STATUS_CODE: ${statusCode} | RESPONSE-BODY: ${JSON.stringify(
+        locals.httpResponse,
+      )}`;
 
-      if (statusCode >= 400)
-        this._logger.error(logBody)
-      else
-        this._logger.info(logBody);
+      if (statusCode >= 400) this._logger.error(logBody);
+      else this._logger.info(logBody);
     });
 
     next();

@@ -3,6 +3,7 @@ import { describe, it, expect, beforeEach } from "vitest";
 import request from "supertest";
 import { AppBuilder } from "@app/builder/app.builder";
 import { appConfig, nodeConfig } from "@common/env";
+import { HTTPResponseModel } from "@common/models";
 import { HEALTH_MESSAGE } from "@health/models/constants";
 import type { Application } from "express";
 
@@ -24,8 +25,16 @@ describe("HealthController E2E Tests", () => {
   it("should return health check message", async () => {
     const response = await request(app).get("/api/v1/health");
 
+    const desiredResponse = new HTTPResponseModel({
+      message: "Request completed successfully",
+      data: HEALTH_MESSAGE,
+    });
+
     expect(response.status).toBe(200);
-    expect(response.body).toEqual(HEALTH_MESSAGE);
+    expect(response.body).toEqual({
+      ...desiredResponse,
+      timestamp: expect.any(String),
+    });
   });
 });
 
