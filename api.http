@@ -1,0 +1,5 @@
+### Variables
+@baseUrl = http://localhost:3000/api/v1/
+
+### Check Health Status
+GET {{baseUrl}}health

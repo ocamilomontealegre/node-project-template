@@ -25,14 +25,14 @@ describe("HealthController E2E Tests", () => {
   it("should return health check message", async () => {
     const response = await request(app).get("/api/v1/health");
 
-    const desiredResponse = new HTTPResponseModel({
+    const expectedResponse = new HTTPResponseModel({
       message: "Request completed successfully",
       data: HEALTH_MESSAGE,
     });
 
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
-      ...desiredResponse,
+      ...expectedResponse,
       timestamp: expect.any(String),
     });
   });
