@@ -11,13 +11,13 @@
     "start": "node dist/main.js",
     "start:dev": "nodemon",
     "lint": "eslint src",
-    "lint:fix": "npm run lint --fix",
-    "lint:verbose": "npm run lint --debug",
+    "lint:fix": "npx lint --fix",
+    "lint:verbose": "npx lint --debug",
     "check:ts": "npx tsc --noEmit",
     "check:verbose": "npx tsc --noEmit --diagnostics",
-    "test:unit": "vitest --config test/config/vitest.config.unit.ts --coverage",
-    "test:e2e": "vitest --config test/config/vitest.config.e2e.ts --coverage",
-    "test": "concurrently \"npm run test:unit\" \"npm run test:e2e\"",
+    "test:unit": "vitest --config test/config/vitest.config.unit.ts --coverage --no-watch",
+    "test:e2e": "vitest --config test/config/vitest.config.e2e.ts --coverage --no-watch --silent",
+    "test": "npm-run-all --parallel test:unit test:e2e",
     "prepare": "husky"
   },
   "keywords": [
@@ -50,6 +50,7 @@
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "nodemon": "^3.1.7",
+    "npm-run-all": "^4.1.5",
     "supertest": "^7.0.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
@@ -80,3 +81,10 @@
     "zod": "^3.23.8"
   }
 }
+
+
+
+
+
+
+
