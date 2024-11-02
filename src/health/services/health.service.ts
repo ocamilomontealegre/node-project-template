@@ -1,9 +1,6 @@
 import { injectable } from "inversify";
 import { HEALTH_MESSAGE } from "@health/models/constants/health-message.constant";
-import { IHealthMessage, IHealthService } from "@health/models/interfaces";
-export const TYPES = {
-  HealthService: Symbol.for("HealthService"),
-};
+import type { IHealthMessage, IHealthService } from "@health/models/interfaces";
 
 @injectable()
 export class HealthService implements IHealthService {

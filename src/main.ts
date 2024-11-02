@@ -31,4 +31,3 @@ const bootstrap = (): void => {
 };
 
 bootstrap();
-

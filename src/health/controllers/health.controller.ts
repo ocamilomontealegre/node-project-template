@@ -5,6 +5,7 @@ import { HEALTH_ENDPOINT } from "@health/models/constants";
 import { IHealthMessage } from "@health/models/interfaces";
 
 @controller(HEALTH_ENDPOINT)
+// @ts-expect-error: HealthController is missing index signature for 'string'
 export class HealthController implements Controller {
   public constructor(
     @inject(HealthService) private readonly _healthService: HealthService,
