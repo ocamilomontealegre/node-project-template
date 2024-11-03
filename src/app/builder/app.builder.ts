@@ -47,8 +47,10 @@ export class AppBuilder {
   }
 
   public configureOpenAPI(): this {
-    if (this._nodeConfig.env === Environment.DEVELOPMENT) {
-      const openAPIDocs = new OpenAPIConfigurator(this._appConfig).configure(this._nodeConfig.port);
+    if (this._nodeConfig.env === Environment.development) {
+      const openAPIDocs = new OpenAPIConfigurator(this._appConfig).configure(
+        this._nodeConfig.port,
+      );
       this._app.use(this._appConfig.appDocsEndpoint, serve, setup(openAPIDocs));
     }
 
