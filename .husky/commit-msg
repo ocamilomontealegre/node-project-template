@@ -1,11 +1,10 @@
 check_commit_format() {
   npx --no-install commitlint --edit $1
 
-  BG_BRIGHT_GREEN='\033[102m'
-  TEXT_WHITE='\033[1;37m'
+  GREEN='\033[1;32m'
   NC='\033[0m'
 
-  echo -e "${BG_BRIGHT_GREEN}${TEXT_WHITE}Commit format is valid!${NC}"
+  echo -e "${GREEN}Commit format is valid!${NC}"
 }
 
 check_commit_format "$1"

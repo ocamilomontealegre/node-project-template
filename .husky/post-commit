@@ -1,4 +1,10 @@
-BG_BLUE='\033[44m'
-NC='\033[0m'
+print_post_commit_message() {
+  BLUE='\033[1;34m'
+  NC='\033[0m'
 
-echo -e "${BG_BLUE}Commit completed successfully. Keep up the good work!${NC}"
+  echo -e "${BLUE}Commit completed successfully. Keep up the good work!${NC}"
+}
+
+print_post_commit_message
+
+
