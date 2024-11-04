@@ -18,4 +18,3 @@ export class BadRequestException extends HTTPException {
     super(StatusCodes.BAD_REQUEST, errorMessage);
   }
 }
-

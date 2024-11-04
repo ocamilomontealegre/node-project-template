@@ -37,4 +37,3 @@ describe("HealthController E2E Tests", () => {
     });
   });
 });
-

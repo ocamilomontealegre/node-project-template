@@ -7,7 +7,7 @@ export default defineConfig({
     globals: true,
     environment: "node",
     restoreMocks: true,
-    include: ["**/*.test.{js.ts}", "**/*.spec.{js.ts}"],
+    include: ["test/**/*.{e2e,unit}.test.{js,ts}", "test/**/*.{e2e,unit}.spec.{js,ts}"],
     exclude: ["node_modules", "dist", ".idea", ".git", ".cache"],
     poolOptions: {
       threads: {
@@ -40,5 +40,3 @@ export default defineConfig({
     },
   },
 });
-
-

@@ -34,4 +34,3 @@ describe("HealthModule Unit Test", () => {
     expect(healthService).toBeInstanceOf(HealthService);
   });
 });
-

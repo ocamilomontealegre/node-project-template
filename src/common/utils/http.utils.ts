@@ -5,4 +5,3 @@ export class HTTPUtils {
     return HTTP_MESSAGES[statusCode] ?? "Unknown status code";
   };
 }
-

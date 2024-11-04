@@ -8,4 +8,3 @@ export class FileUtils {
     return dirname(__filename);
   };
 }
-

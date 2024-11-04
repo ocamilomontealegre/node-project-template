@@ -1,9 +1,15 @@
 import { z } from "zod";
 
 const EnvSchema = z.object({
-  APP_DOCS_ENDPOINT: z.string().min(1, "APP_DOCS_ENDPOINT cannot be empty").default("docs"),
+  APP_DOCS_ENDPOINT: z
+    .string()
+    .min(1, "APP_DOCS_ENDPOINT cannot be empty")
+    .default("docs"),
   APP_DOCS_VERSION: z.string().default("1.0.0"),
-  APP_GLOBAL_PREFIX: z.string().min(1, "APP_GLOBAL_PREFIX cannot be empty").default("api"),
+  APP_GLOBAL_PREFIX: z
+    .string()
+    .min(1, "APP_GLOBAL_PREFIX cannot be empty")
+    .default("api"),
   APP_VERSION: z.string().min(1, "APP_VERSION cannot be empty").default("v1"),
 });
 

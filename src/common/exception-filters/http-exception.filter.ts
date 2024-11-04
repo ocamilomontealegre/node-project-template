@@ -19,4 +19,3 @@ export class HTTPExceptionFilter {
     res.status(statusCode).json(errorResponse);
   }
 }
-

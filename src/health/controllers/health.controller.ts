@@ -16,4 +16,3 @@ export class HealthController implements Controller {
     return this._healthService.check();
   }
 }
-

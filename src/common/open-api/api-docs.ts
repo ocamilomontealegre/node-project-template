@@ -51,7 +51,8 @@ export const apiDocs = {
           timestamp: {
             type: "string",
             format: "date-time",
-            description: "The timestamp when the health check was performed, in ISO 8601 format.",
+            description:
+              "The timestamp when the health check was performed, in ISO 8601 format.",
             example: "2024-10-07T12:34:56Z",
           },
         },
@@ -60,4 +61,3 @@ export const apiDocs = {
     },
   },
 };
-

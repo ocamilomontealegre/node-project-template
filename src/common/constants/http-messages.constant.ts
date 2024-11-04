@@ -33,4 +33,3 @@ export const HTTP_MESSAGES: Record<number, string> = {
   504: "Gateway Timeout - The server did not receive a timely response from an upstream server",
   505: "HTTP Version Not Supported - HTTP version used in the request is not supported by the server",
 };
-

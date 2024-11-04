@@ -32,8 +32,7 @@ export class UncaughtExceptionFilter {
   private readonly handleServerError = (error: NodeJS.ErrnoException): void => {
     if (error.code === "EADDRINUSE")
       this._logger.error(`Port already in use: ${error.message}`);
-    else
-      this._logger.error(`Server Error: ${error.message}`);
+    else this._logger.error(`Server Error: ${error.message}`);
 
     this.handleShutdown();
   };
@@ -51,4 +50,3 @@ export class UncaughtExceptionFilter {
     });
   };
 }
-

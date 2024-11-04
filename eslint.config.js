@@ -35,6 +35,7 @@ export default typescriptEslint.config({
     "vitest.config.ts",
     "commitlint.config.ts",
     "*.mjs",
+    ".husky",
   ],
   plugins: {
     "@cspell": cspellPlugin,
@@ -178,4 +179,3 @@ export default typescriptEslint.config({
     ],
   },
 });
-

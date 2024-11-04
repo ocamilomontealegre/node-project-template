@@ -58,7 +58,8 @@ export class AppBuilder {
   }
 
   public setupRouters(): this {
-    const inversifyRouter = new InversifyExpressServer(this._appContainer).build()._router;
+    const inversifyRouter = new InversifyExpressServer(this._appContainer).build()
+      ._router;
     const appRouter = this._appContainer.get<AppRouter>(AppRouter).getRouter();
 
     const apiPrefix = `/${this._appConfig.appGlobalPrefix}/${this._appConfig.appVersion}`;
@@ -78,4 +79,3 @@ export class AppBuilder {
     return this._app;
   }
 }
-

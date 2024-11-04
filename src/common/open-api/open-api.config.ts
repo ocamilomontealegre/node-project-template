@@ -26,10 +26,10 @@ export class OpenAPIConfigurator {
 
     const openAPIDocs = swaggerJSDoc(openAPIOptions);
     this._logger.info(
-      `OpenAPI docs is running on http://localhost:${port}${appConfig.appDocsEndpoint}`, "📔"
+      `OpenAPI docs is running on http://localhost:${port}${appConfig.appDocsEndpoint}`,
+      "📔",
     );
 
     return openAPIDocs;
   }
 }
-

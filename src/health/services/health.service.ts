@@ -4,7 +4,7 @@ import type { IHealthMessage, IHealthService } from "@health/models/interfaces";
 
 @injectable()
 export class HealthService implements IHealthService {
-  public constructor() { }
+  public constructor() {}
 
   public check(): IHealthMessage {
     return HEALTH_MESSAGE;

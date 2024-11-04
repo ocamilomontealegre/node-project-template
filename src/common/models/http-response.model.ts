@@ -22,4 +22,3 @@ export class HTTPResponseModel {
     this.timestamp = timestamp;
   }
 }
-

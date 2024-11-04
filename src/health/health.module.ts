@@ -6,9 +6,3 @@ export const HealthModule = new ContainerModule((bind: interfaces.Bind) => {
   bind<HealthService>(HealthService).toSelf().inSingletonScope();
   bind<HealthController>(HealthController).toSelf().inSingletonScope();
 });
-
-
-
-
-
-

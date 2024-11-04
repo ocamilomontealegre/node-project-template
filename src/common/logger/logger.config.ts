@@ -77,4 +77,3 @@ export class Logger {
     this.logger.debug(`${icon} ${message}`, callback);
   }
 }
-
