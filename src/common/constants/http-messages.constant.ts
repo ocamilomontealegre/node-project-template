@@ -1,5 +1,5 @@
 export const HTTP_MESSAGES: Record<number, string> = {
-  /* eslint-disable */
+  /* eslint-disable @typescript-eslint/naming-convention */
   200: "Request completed successfully",
   201: "Resource successfully created",
   202: "Request accepted for processing, but not yet complete",
@@ -15,4 +15,5 @@ export const HTTP_MESSAGES: Record<number, string> = {
   502: "Server received an invalid response from an upstream server",
   503: "The server is currently unable to handle the request",
   504: "The server did not receive a timely response from an upstream server",
-}
+};
+
