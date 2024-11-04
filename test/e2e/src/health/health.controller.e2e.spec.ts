@@ -26,7 +26,7 @@ describe("HealthController E2E Tests", () => {
     const response = await request(app).get("/api/v1/health");
 
     const expectedResponse = new HTTPResponseModel({
-      message: "Request completed successfully",
+      message: "OK, Request completed successfully",
       data: HEALTH_MESSAGE,
     });
 

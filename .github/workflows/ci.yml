@@ -1,5 +1,8 @@
 name: CI
 
+env:
+  HUSKY: 0
+
 on:
   push:
     branches:
@@ -15,14 +18,15 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-      
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
-      
+          node-version: "20"
+
       - name: Install dependencies
         run: npm install
 
       - name: Run tests
         run: npm test
+

@@ -18,7 +18,7 @@
     "test:unit": "vitest --config test/config/vitest.config.unit.ts --coverage --no-watch",
     "test:e2e": "vitest --config test/config/vitest.config.e2e.ts --coverage --no-watch --silent",
     "test": "npm-run-all --parallel test:unit test:e2e",
-    "prepare": "husky"
+    "prepare": "husky || true"
   },
   "keywords": [
     "typescript",
