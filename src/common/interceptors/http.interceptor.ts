@@ -1,3 +1,4 @@
+import { StatusCodes } from "http-status-codes";
 import { Logger } from "@common/logger/logger.config";
 import { HTTPUtils } from "@common/utils";
 import { HTTPResponseModel } from "@common/models";
@@ -14,7 +15,7 @@ export class HttpInterceptor {
 
   private _overrideResMethod(res: Response, method: Send): Send {
     return (body: GenericObject): Response => {
-      if (res.statusCode >= 400) {
+      if (res.statusCode >= StatusCodes.BAD_REQUEST) {
         res.locals.httpResponse = body;
         return method.call(res, body);
       }
@@ -50,7 +51,7 @@ export class HttpInterceptor {
         locals.httpResponse,
       )}`;
 
-      if (statusCode >= 400) this._logger.error(logBody);
+      if (statusCode >= StatusCodes.BAD_REQUEST) this._logger.error(logBody);
       else this._logger.info(logBody);
     });
 

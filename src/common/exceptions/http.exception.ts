@@ -1,3 +1,4 @@
+import { StatusCodes, getReasonPhrase } from "http-status-codes";
 import { BaseException } from "./base.exception";
 
 export class HTTPException extends BaseException {
@@ -7,13 +8,14 @@ export class HTTPException extends BaseException {
 }
 
 export class NotFoundException extends HTTPException {
-  public constructor(errorMessage: string = "Resource not found") {
-    super(404, errorMessage);
+  public constructor(errorMessage: string = getReasonPhrase(StatusCodes.NOT_FOUND)) {
+    super(StatusCodes.NOT_FOUND, errorMessage);
   }
 }
 
 export class BadRequestException extends HTTPException {
-  public constructor(errorMessage: string = "Bad Request") {
-    super(400, errorMessage);
+  public constructor(errorMessage: string = getReasonPhrase(StatusCodes.BAD_REQUEST)) {
+    super(StatusCodes.BAD_REQUEST, errorMessage);
   }
 }
+
