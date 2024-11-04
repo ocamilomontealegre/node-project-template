@@ -1,4 +1,4 @@
-GREEN='\033[0;32m'
+BG_BLUE='\033[44m'
 NC='\033[0m'
 
-echo -e "${GREEN}Commit completed successfully. Keep up the good work!${NC}"
+echo -e "${BG_BLUE}Commit completed successfully. Keep up the good work!${NC}"

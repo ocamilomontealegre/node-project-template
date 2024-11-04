@@ -1,1 +1,6 @@
 npx --no-install commitlint --edit $1
+
+BG_GREEN='\033[42m'
+NC='\033[0m'
+
+echo -e "${BG_GREEN}Commit format is valid!${NC}"
