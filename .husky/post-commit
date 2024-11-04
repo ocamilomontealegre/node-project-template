@@ -1,1 +1,4 @@
-Commit completed successfully. Keep it up the good work!
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Commit completed successfully. Keep up the good work!"
