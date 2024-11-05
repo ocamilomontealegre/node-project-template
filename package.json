@@ -13,8 +13,8 @@
     "lint": "eslint src",
     "lint:fix": "npx lint --fix",
     "lint:verbose": "npx lint --debug",
-    "check:ts": "npx tsc --noEmit",
-    "check:verbose": "npx tsc --noEmit --diagnostics",
+    "ts": "npx tsc --noEmit",
+    "ts:verbose": "npx tsc --noEmit --diagnostics",
     "format": "npx prettier --write '**/*.{js,ts,json,yml}'",
     "test:unit": "vitest --config test/config/vitest.config.unit.ts --no-watch",
     "test:e2e": "vitest --config test/config/vitest.config.e2e.ts --no-watch --silent",
@@ -22,7 +22,7 @@
     "test:co": "open ./coverage/index.html",
     "test": "npm-run-all --parallel test:unit test:e2e",
     "prepare": "husky || true",
-    "dependencies": "npx knip --dependencies",
+    "check:d": "npx knip --dependencies",
     "npkill": "npx npkill"
   },
   "keywords": [
