@@ -13,6 +13,7 @@
     "lint": "eslint src",
     "lint:fix": "npx lint --fix",
     "lint:verbose": "npx lint --debug",
+    "lint:inspect": "npx @eslint/config-inspector@latest",
     "ts": "npx tsc --noEmit",
     "ts:verbose": "npx tsc --noEmit --diagnostics",
     "format": "npx prettier --write '**/*.{js,ts,json,yml}'",
@@ -66,6 +67,7 @@
   "dependencies": {
     "@chiguitech/node-common": "^0.0.1",
     "@cspell/eslint-plugin": "^8.15.5",
+    "@eslint/config-inspector": "0.5.6",
     "@typescript-eslint/eslint-plugin": "^8.12.2",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
