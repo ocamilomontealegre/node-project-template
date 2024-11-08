@@ -18,8 +18,9 @@
   },
   "module": {
     "type": "es6",
+    "strict": true,
     "resolveFully": true
   },
-  "minify": false
+  "minify": true
 }
 
