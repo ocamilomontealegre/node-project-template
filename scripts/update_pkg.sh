@@ -23,7 +23,7 @@ update_pkg() {
   echo "3) Description"
   echo "4) Exit"
 
-  read -p "Enter your choise [1-4]: " choice
+  read -r -p "Enter your choise [1-4]: " choice
 
   if [ "$choice" != "1" ] && [ "$choice" != "2" ] && [ "$choice" != "3" ] && [ "$choice" != "4" ]; then
     echo "Invalid choice! Please select 1, 2, 3, or 4"
@@ -32,19 +32,19 @@ update_pkg() {
   fi
 
   if [ "$choice" -eq 1 ]; then
-    read -p "Enter new project name: " name
+    read -r -p "Enter new project name: " name
     name=${name:-"node_project_template"}
     update_json_field "name" "$name"
   fi
 
   if [ "$choice" -eq 2 ]; then
-    read -p "Enter new project version: " version
+    read -r -p "Enter new project version: " version
     version=${version:-"1.0.0"}
     update_json_field "version" "$version"
   fi
 
   if [ "$choice" -eq 3 ]; then
-    read -p "Enter new project description: " description
+    read -r -p "Enter new project description: " description
     description=${description:-"Typescript & Express template"}
     update_json_field "description" "$description"
   fi
@@ -54,7 +54,5 @@ update_pkg() {
     exit 0
   fi
 }
-
-
 
 update_pkg
