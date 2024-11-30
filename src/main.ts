@@ -5,6 +5,7 @@ import { Logger } from "@common/logger/logger.config";
 import { UncaughtExceptionFilter } from "@common/exception-filters";
 import { appConfig, nodeConfig } from "@common/env";
 import type { Application } from "express";
+import { AppModule } from "@app/app.module";
 
 const startServer = (app: Application, port: number): void => {
   const server = app.listen(port, () =>
@@ -17,7 +18,10 @@ const startServer = (app: Application, port: number): void => {
 };
 
 const bootstrap = (): void => {
-  const app = new AppBuilder(nodeConfig, appConfig)
+  const appModule = new AppModule();
+  const appContainer = appModule.getContainer();
+
+  const app = new AppBuilder(nodeConfig, appConfig, appContainer)
     .useJSonParser()
     .useHelmet()
     .useCors()
@@ -31,4 +35,9 @@ const bootstrap = (): void => {
 };
 
 bootstrap();
+
+
+
+
+
 
