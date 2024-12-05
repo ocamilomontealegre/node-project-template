@@ -5,6 +5,7 @@ import pluginJs from "@eslint/js";
 import typescriptEslint from "typescript-eslint";
 import tsParser from "@typescript-eslint/parser";
 import cspellPlugin from "@cspell/eslint-plugin";
+import importPlugin from "eslint-plugin-import";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -38,11 +39,28 @@ export default typescriptEslint.config({
     ".husky",
   ],
   plugins: {
+    import: importPlugin,
     "@cspell": cspellPlugin,
   },
   extends: [pluginJs.configs.recommended, ...typescriptEslint.configs.recommended],
   rules: {
     "no-duplicate-imports": "error",
+    "sort-imports": [
+      "off",
+      {
+        ignoreCase: false,
+        ignoreDeclarationSort: false,
+        ignoreMemberSort: false,
+        memberSyntaxSortOrder: ["none", "all", "multiple", "single"],
+        allowSeparatedGroups: false,
+      },
+    ],
+    "import/order": [
+      "error",
+      {
+        groups: [["builtin", "external", "internal"], ["type"]],
+      },
+    ],
     "@typescript-eslint/triple-slash-reference": "off",
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/no-explicit-any": "error",
@@ -179,3 +197,4 @@ export default typescriptEslint.config({
     ],
   },
 });
+
