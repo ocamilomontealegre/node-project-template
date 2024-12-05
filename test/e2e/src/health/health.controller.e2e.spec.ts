@@ -2,6 +2,7 @@ import "reflect-metadata";
 import { describe, it, expect, beforeEach } from "vitest";
 import request from "supertest";
 import { AppBuilder } from "@app/builder/app.builder";
+import { AppModule } from "@app/app.module";
 import { appConfig, nodeConfig } from "@common/env";
 import { HTTPResponseModel } from "@common/models";
 import { HEALTH_MESSAGE } from "@health/models/constants";
@@ -11,7 +12,10 @@ describe("HealthController E2E Tests", () => {
   let app: Application;
 
   beforeEach(async () => {
-    const appBuilder = new AppBuilder(nodeConfig, appConfig)
+    const appModule = new AppModule();
+    const appContainer = appModule.getContainer();
+
+    const appBuilder = new AppBuilder(nodeConfig, appConfig, appContainer)
       .useCors()
       .useJSonParser()
       .useHttpInterceptor()
@@ -37,3 +41,4 @@ describe("HealthController E2E Tests", () => {
     });
   });
 });
+
