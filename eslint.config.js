@@ -51,14 +51,14 @@ export default typescriptEslint.config({
         ignoreCase: false,
         ignoreDeclarationSort: false,
         ignoreMemberSort: false,
-        memberSyntaxSortOrder: ["none", "all", "multiple", "single"],
+        memberSyntaxSortOrder: ["none", "all", "single", "multiple"],
         allowSeparatedGroups: false,
       },
     ],
     "import/order": [
       "error",
       {
-        groups: [["builtin", "external", "internal"], ["type"]],
+        groups: [["builtin", "external", "internal", "parent", "sibling"], ["type"]],
       },
     ],
     "@typescript-eslint/triple-slash-reference": "off",
