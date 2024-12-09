@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { describe, it, expect, beforeEach } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 import request from "supertest";
 import { AppBuilder } from "@app/builder/app.builder";
 import { AppModule } from "@app/app.module";
