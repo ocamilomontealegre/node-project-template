@@ -1,5 +1,5 @@
 import { fileURLToPath } from "node:url";
-import { dirname, basename } from "node:path";
+import { basename, dirname } from "node:path";
 
 export class FileUtils {
   public static readonly getCurrentDirectory = (metaURL: string): string => {

@@ -1,4 +1,4 @@
-import express, { json, type Application } from "express";
+import express, { type Application, json } from "express";
 import { InversifyExpressServer } from "inversify-express-utils";
 import { serve, setup } from "swagger-ui-express";
 import cors from "cors";
@@ -78,5 +78,4 @@ export class AppBuilder {
     return this.app;
   }
 }
-
 

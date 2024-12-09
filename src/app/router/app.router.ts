@@ -1,6 +1,6 @@
-import { NotFoundException } from "@common/exceptions/http.exception";
-import { Router, type Request, type Response, type NextFunction } from "express";
 import { injectable } from "inversify";
+import { type NextFunction, type Request, type Response, Router } from "express";
+import { NotFoundException } from "@common/exceptions/http.exception";
 
 @injectable()
 export class AppRouter {
@@ -24,3 +24,4 @@ export class AppRouter {
     return this._router;
   }
 }
+

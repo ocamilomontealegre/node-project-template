@@ -1,9 +1,9 @@
 import { injectable } from "inversify";
 import {
+  type Logger as WinstonLogger,
   createLogger,
   format,
   transports,
-  type Logger as WinstonLogger,
 } from "winston";
 import { ANSIColors } from "./enums";
 import { LOGGER_COLORS } from "./constants";
