@@ -24,3 +24,4 @@ describe("HealthController Unit Test", () => {
     expect(result).toEqual(HEALTH_MESSAGE);
   });
 });
+

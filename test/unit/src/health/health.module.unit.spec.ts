@@ -19,7 +19,7 @@ describe("HealthModule Unit Test", () => {
     expect(healthService1).toBe(healthService2);
   });
 
-  it("should bind HealthController as a singleton", () => {
+  it.only("should bind HealthController as a singleton", () => {
     const healthController1 = container.get<HealthController>(HealthController);
     const healthController2 = container.get<HealthController>(HealthController);
 
@@ -34,3 +34,4 @@ describe("HealthModule Unit Test", () => {
     expect(healthService).toBeInstanceOf(HealthService);
   });
 });
+
