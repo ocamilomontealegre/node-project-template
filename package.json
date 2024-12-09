@@ -17,7 +17,7 @@
     "ts": "npx tsc --noEmit",
     "ts:verbose": "npx tsc --noEmit --diagnostics",
     "format": "npx prettier --write '**/*.{js,ts,json,yml}'",
-    "test:unit": "vitest --config test/config/vitest.config.unit.ts --no-watch",
+    "test:unit": "vitest --config test/config/vitest.config.unit.ts --no-watch --silent=false",
     "test:e2e": "vitest --config test/config/vitest.config.e2e.ts --no-watch --silent",
     "test:c": "vitest --config test/config/vitest.config.ts --coverage --no-watch --silent",
     "test:co": "open ./coverage/index.html",
