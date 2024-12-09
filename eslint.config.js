@@ -46,12 +46,12 @@ export default typescriptEslint.config({
   rules: {
     "no-duplicate-imports": "error",
     "sort-imports": [
-      "off",
+      "warn",
       {
         ignoreCase: false,
-        ignoreDeclarationSort: false,
+        ignoreDeclarationSort: true,
         ignoreMemberSort: false,
-        memberSyntaxSortOrder: ["none", "all", "single", "multiple"],
+        memberSyntaxSortOrder: undefined,
         allowSeparatedGroups: false,
       },
     ],
