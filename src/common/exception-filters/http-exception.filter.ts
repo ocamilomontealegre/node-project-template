@@ -16,6 +16,8 @@ export class HTTPExceptionFilter {
       message,
     });
 
+    res.locals.error = err;
     res.status(statusCode).json(errorResponse);
   }
 }
+

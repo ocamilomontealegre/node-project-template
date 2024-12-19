@@ -7,13 +7,13 @@ import type { NextFunction, Request, Response, Send } from "express";
 import type { GenericObject } from "@common/types";
 
 export class HttpInterceptor {
-  private readonly _logger: Logger;
+  private readonly logger: Logger;
 
   public constructor() {
-    this._logger = new Logger(HttpInterceptor.name);
+    this.logger = new Logger(HttpInterceptor.name);
   }
 
-  private _overrideResMethod(res: Response, method: Send): Send {
+  private overrideResMethod(res: Response, method: Send): Send {
     return (body: GenericObject): Response => {
       if (res.statusCode >= StatusCodes.BAD_REQUEST) {
         res.locals.httpResponse = body;
@@ -40,7 +40,7 @@ export class HttpInterceptor {
     }
 
     const originalJson = res.json.bind(res);
-    res.json = this._overrideResMethod(res, originalJson);
+    res.json = this.overrideResMethod(res, originalJson);
 
     res.on("finish", () => {
       const { statusCode, locals } = res;
@@ -51,10 +51,12 @@ export class HttpInterceptor {
         locals.httpResponse,
       )}`;
 
-      if (statusCode >= StatusCodes.BAD_REQUEST) this._logger.error(logBody);
-      else this._logger.info(logBody);
+      if (statusCode >= StatusCodes.BAD_REQUEST)
+        this.logger.error(`${logBody} | ERROR: ${res.locals?.error.stack}`);
+      else this.logger.info(logBody);
     });
 
     next();
   };
 }
+
